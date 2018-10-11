@@ -5,11 +5,12 @@ import 'classlist.js';
     const style = `
         .simple-banner {
             padding: 10px;
+            position: fixed;
+            top: 0;
+            transform: translateY(-100%);
             font-size: 20px;
             background-color: #94ebfe;
-            position: relative;
             opacity: 0;
-            transform: translateY(-150%);
         }
 
         .simple-banner-hidden-transition {
