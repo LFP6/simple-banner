@@ -86,13 +86,14 @@ import 'classlist.js';
             this.name = name;
             this.container = container;
             this.transitionByDefault = transitionByDefault;
+            this.allowClose = allowClose;
             this.allowHideAWhile = allowHideAWhile;
             this.allowHideForever = allowHideForever;
 
             this.banner = document.createElement('div');
             this.banner.className = `simple-banner simple-banner-${name}`;
             this.banner.innerHTML = `
-                <button class="simple-banner-close" style="${allowClose ? '' : 'display: none;'}" aria-label="${ariaCloseText}">&times;</button>
+                <button class="simple-banner-close" style="${this.allowClose ? '' : 'display: none;'}" aria-label="${ariaCloseText}">&times;</button>
                 <div class="simple-banner-content">${content}</div>
                 <div class="simple-banner-confirm">
                     <button class="simple-banner-show-later" style="${this.allowHideAWhile ? '' : 'display: none;'}">Show Later</button>
@@ -116,7 +117,7 @@ import 'classlist.js';
             if (+cookie > new Date().valueOf()) return 'COOKIE_LATER';
 
             this.banner.getElementsByClassName('simple-banner-content')[0].style.display = '';
-            this.banner.getElementsByClassName('simple-banner-close')[0].style.display = '';
+            if (this.allowClose) this.banner.getElementsByClassName('simple-banner-close')[0].style.display = '';
             this.banner.getElementsByClassName('simple-banner-confirm')[0].style.display = '';
             this.banner.classList.remove('simple-banner-hidden-transition');
 
