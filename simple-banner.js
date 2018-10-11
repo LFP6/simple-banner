@@ -4,6 +4,8 @@ import 'classlist.js';
     const transitionLength = 1200;
     const style = `
         .simple-banner {
+            width: 100%;
+            box-sizing: border-box;
             padding: 10px;
             position: fixed;
             top: 0;
