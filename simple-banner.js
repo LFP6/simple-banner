@@ -7,8 +7,6 @@ import 'classlist.js';
             width: 100%;
             box-sizing: border-box;
             padding: 10px;
-            position: fixed;
-            top: 0;
             transform: translateY(-100%);
             font-size: 20px;
             background-color: #94ebfe;
@@ -124,7 +122,7 @@ import 'classlist.js';
             this.banner.getElementsByClassName('simple-banner-confirm')[0].style.display = '';
             this.banner.classList.remove('simple-banner-hidden-transition');
 
-            this.container.appendChild(this.banner);
+            this.container.insertBefore(this.banner, this.container.firstChild);
             setTimeout(() => {
                 if (transition) this.banner.classList.add('simple-banner-shown-transition');
                 this.banner.classList.add('simple-banner-shown');
