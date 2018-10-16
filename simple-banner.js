@@ -100,8 +100,8 @@ import 'classlist.js';
                     <button class="simple-banner-show-later" style="${this.allowHideAWhile ? '' : 'display: none;'}">Show Later</button>
                     <select class="simple-banner-show-when" style="${this.allowHideAWhile ? '' : 'display: none;'}">
                         <option value=0>Next Visit</option>
-                        <option value=86400000>Tomorrow</option>
-                        <option value=604800000>Next Week</option>
+                        <option value=1>Tomorrow</option>
+                        <option value=7>Next Week</option>
                     </select>
                     <button class="simple-banner-hide-forever" style="${this.allowHideForever ? '' : 'display: none;'}">Hide Forever</button>
                 </div>
@@ -114,8 +114,7 @@ import 'classlist.js';
         show(transition=this.transitionByDefault) {
             if (openBanner) return 'OPEN_BANNER';
             let cookie = Cookies.get(`simplebanner_${this.name}`);
-            if (cookie == 'NEVER') return 'COOKIE_NEVER';
-            if (+cookie > new Date().valueOf()) return 'COOKIE_LATER';
+            if (cookie == 'OFF') return 'COOKIE_SET';
 
             this.banner.getElementsByClassName('simple-banner-content')[0].style.display = '';
             if (this.allowClose) this.banner.getElementsByClassName('simple-banner-close')[0].style.display = '';
@@ -140,13 +139,13 @@ import 'classlist.js';
         }
 
         hideForNow() {
-            let offset = this.banner.getElementsByClassName('simple-banner-show-when')[0].value;
-            Cookies.set(`simplebanner_${this.name}`, new Date().valueOf() + +offset);
+            let expires = this.banner.getElementsByClassName('simple-banner-show-when')[0].value;
+            Cookies.set(`simplebanner_${this.name}`, 'OFF', {expires});
             this.hide();
         }
 
         hideForever() {
-            Cookies.set(`simplebanner_${this.name}`, 'NEVER');
+            Cookies.set(`simplebanner_${this.name}`, 'OFF');
             this.hide();
         }
 
