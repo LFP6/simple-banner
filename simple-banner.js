@@ -139,7 +139,7 @@ import 'classlist.js';
         }
 
         hideForNow() {
-            let expires = this.banner.getElementsByClassName('simple-banner-show-when')[0].value;
+            let expires = +this.banner.getElementsByClassName('simple-banner-show-when')[0].value;
             Cookies.set(`simplebanner_${this.name}`, 'OFF', {expires});
             this.hide();
         }
