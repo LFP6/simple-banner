@@ -145,7 +145,7 @@ import 'classlist.js';
         }
 
         hideForever() {
-            Cookies.set(`simplebanner_${this.name}`, 'OFF');
+            Cookies.set(`simplebanner_${this.name}`, 'OFF', {expires: 36500});
             this.hide();
         }
 
