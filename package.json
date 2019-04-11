@@ -21,12 +21,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LFP6/simple-banner.git"
+    "url": "git+https://github.com/luxaritas/simple-banner.git"
   },
   "author": "Jonathan Romano",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/LFP6/simple-banner/issues"
+    "url": "https://github.com/luxaritas/simple-banner/issues"
   },
-  "homepage": "https://github.com/LFP6/simple-banner#readme"
+  "homepage": "https://github.com/luxaritas/simple-banner#readme"
 }
